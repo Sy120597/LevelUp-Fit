@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | LevelUp Fit</title>
+  <link rel="stylesheet" href="functionality.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+  <header>
+    <div class="logo">LevelUp Fit 🎯</div>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="blogs.html">BLOG</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="section">
+      <div class="grid">
+        <div class="card">
+          <h2>Your Progress</h2>
+          <p>Level 5 – Warrior</p>
+          <div class="progress-bar">
+            <div class="progress" style="width: 75%;"></div>
+          </div>
+          <p class="small">XP: 750 / 1000</p>
+        </div>
+
+        <div class="card">
+          <h2>Daily Streak 🔥</h2>
+          <p>You've worked out <strong>7 days in a row!</strong></p>
+          <div class="highlight">Keep it up for bonus XP!</div>
+        </div>
+
+        <div class="card">
+          <h2>Your Badges 🏅</h2>
+          <ul>
+            <li>Starter Badge</li>
+            <li>3-Day Streak</li>
+            <li>1,000 Calories Burned</li>
+          </ul>
+        </div>
+
+        <div class="card wide">
+          <h2>Current Challenge 🎯</h2>
+          <p>Complete 5 workouts this week to earn +300 XP</p>
+          <button id="startWorkoutBtn" onclick="startWorkout()">Start Today's Workout</button>
+          <p id="workoutMessage" class="hidden">Workout Started! 💪 Keep going!</p>
+        </div>
+
+        <div class="card">
+          <h2>Today's Motivation 💡</h2>
+          <blockquote>"Every champion was once a contender that refused to give up." – Rocky Balboa</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Challenges -->
+    <section id="challenges" class="section hidden-section">
+      <div class="card">
+        <h2>Weekly Fitness Challenges 💪</h2>
+        <ul>
+          <li>🏃 Run 5km — <span class="green">Completed</span></li>
+          <li>🧘 3 Yoga Sessions — <span class="yellow">In Progress</span></li>
+          <li>🚴 Cycle 20km — <span class="red">Not Started</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Progress -->
+    <section id="progress" class="section hidden-section">
+      <div class="card">
+        <h2>Your Progress 📈</h2>
+        <p>Workouts this month: <strong>18</strong></p>
+        <p>Calories Burned: <strong>6,250</strong></p>
+        <p>Steps Taken: <strong>102,400</strong></p>
+      </div>
+    </section>
+
+    <!-- Settings -->
+    <section id="settings" class="section hidden-section">
+      <div class="card">
+        <h2>Settings ⚙️</h2>
+        <label>
+          <input type="checkbox" checked> Receive Daily Motivations
+        </label><br>
+        <label>
+          <input type="checkbox"> Enable Sound Effects
+        </label>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 LevelUp Fit. Built by Shivam Yadav.
+  </footer>
+
+  <!-- JavaScript (untouched) -->
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden-section'));
+      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active-tab'));
+      document.getElementById(sectionId).classList.remove('hidden-section');
+      document.getElementById('tab-' + sectionId).classList.add('active-tab');
+    }
+
+    showSection('dashboard');
+
+    function startWorkout() {
+      const btn = document.getElementById('startWorkoutBtn');
+      const msg = document.getElementById('workoutMessage');
+      btn.disabled = true;
+      btn.classList.add('disabled');
+      msg.classList.remove('hidden');
+      msg.textContent = "Workout Started! 💪 Keep going!";
+      console.log("Workout started at:", new Date().toLocaleTimeString());
+    }
+  </script>
+</body>
+</html>

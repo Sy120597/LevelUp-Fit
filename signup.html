@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signup - Fitness Tracker</title>
+  <link rel="stylesheet" href="signUp.css">
+</head>
+<body id="themeBody">
+
+ <!-- Header / Navbar -->
+  <header>
+    <div class="logo">LevelUp Fit 🎯</div>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="blogs.html">BLOG</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <!-- Signup Form -->
+  <main class="main">
+    <div class="signup-card fade-in-up">
+      <h2>Create Your Account</h2>
+
+      <form onsubmit="handleSignup(event)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+          <p id="emailError" class="error hidden">Email already registered</p>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="password-field">
+            <input type="password" id="password" required minlength="6">
+            <span onclick="togglePassword()">👁️</span>
+          </div>
+          <p class="hint">Minimum 6 characters</p>
+        </div>
+
+        <button type="submit" class="submit-btn">Sign Up</button>
+      </form>
+
+      <p class="redirect">
+        Already have an account?
+        <a href="login.html">Login here</a>
+      </p>
+    </div>
+  </main>
+
+   <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2025 LevelUp Fit. Built by Shivam Yadav.</p>
+  </footer>
+
+  <script>
+    function handleSignup(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const emailError = document.getElementById("emailError");
+
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const userExists = users.some(user => user.email === email);
+
+      if (userExists) {
+        emailError.classList.remove('hidden');
+        return;
+      }
+
+      const newUser = { name, email, password };
+      users.push(newUser);
+      localStorage.setItem('users', JSON.stringify(users));
+
+      event.target.reset();
+      alert(`Account created for ${name}! Redirecting to login...`);
+      window.location.href = 'login.html';
+    }
+
+    function togglePassword() {
+      const passInput = document.getElementById("password");
+      passInput.type = passInput.type === "password" ? "text" : "password";
+    }
+
+    function toggleTheme() {
+      const body = document.getElementById("themeBody");
+      body.classList.toggle("light");
+    }
+  </script>
+</body>
+</html>

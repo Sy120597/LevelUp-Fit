@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LevelUp Fit Blog & Tracker</title>
+  <link rel="stylesheet" href="blogs.css">
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header>
+    <div class="logo">LevelUp Fit 🎯</div>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="blogs.html">BLOG</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Fitness Blog Section -->
+    <section id="blog">
+      <h2>Write Your Fitness Journey</h2>
+      <div class="blog-input">
+        <textarea id="blogPost" rows="6" placeholder="Share your fitness experience..."></textarea>
+        <button onclick="submitBlogPost()">Submit Blog Post</button>
+      </div>
+    </section>
+
+    <!-- Displaying Blog Posts -->
+    <section class="features" id="posts">
+      <h2>Fitness Blog Entries</h2>
+      <div id="postsContainer">
+        <!-- Posts will appear here -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 LevelUp Fit. Built by Shivam Yadav.
+  </footer>
+
+  <script>
+    let blogPosts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+
+    function submitBlogPost() {
+      const blogPostContent = document.getElementById('blogPost').value;
+      if (blogPostContent.trim() === "") {
+        alert("Please write something before submitting.");
+        return;
+      }
+      const newPost = {
+        id: Date.now(),
+        content: blogPostContent,
+        date: new Date().toLocaleString()
+      };
+      blogPosts.push(newPost);
+      localStorage.setItem('blogPosts', JSON.stringify(blogPosts));
+      document.getElementById('blogPost').value = '';
+      displayBlogPosts();
+    }
+
+    function deleteBlogPost(postId) {
+      blogPosts = blogPosts.filter(post => post.id !== postId);
+      localStorage.setItem('blogPosts', JSON.stringify(blogPosts));
+      displayBlogPosts();
+    }
+
+    function displayBlogPosts() {
+      const postsContainer = document.getElementById('postsContainer');
+      postsContainer.innerHTML = '';
+      blogPosts.forEach(post => {
+        const postElement = document.createElement('div');
+        postElement.className = 'about-card';
+        
+        const postDate = document.createElement('p');
+        postDate.className = 'post-date';
+        postDate.textContent = `Posted on: ${post.date}`;
+        
+        const postContent = document.createElement('p');
+        postContent.className = 'post-content';
+        postContent.textContent = post.content;
+        
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'delete-btn';
+        deleteButton.textContent = 'Delete';
+        deleteButton.onclick = () => deleteBlogPost(post.id);
+        
+        postElement.appendChild(postDate);
+        postElement.appendChild(postContent);
+        postElement.appendChild(deleteButton);
+        postsContainer.appendChild(postElement);
+      });
+    }
+
+    displayBlogPosts();
+  </script>
+
+</body>
+</html>

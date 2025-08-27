@@ -1,0 +1,140 @@
+/* General Styles */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  overflow-x: hidden; /* ✅ Prevent horizontal scrolling */
+}
+
+/* Header / Navbar */
+header {
+  background-color: #1f2937; /* dark gray */
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+header nav a {
+  margin-left: 24px;
+  font-weight: 500;
+  color: #fff;
+}
+
+header nav a:hover {
+  color: #ddeb20;
+  text-decoration: underline;
+}
+
+.login-btn {
+  background: #4f46e5;
+  padding: 10px 18px;
+  border-radius: 8px;
+
+}
+.login-btn a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+.login-btn:hover {
+  background: #6366f1;
+}
+.login-btn a:hover {
+  color: #facc15;
+}
+
+/* Slideshow */
+.slideshow {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1s ease-in-out;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 10;
+}
+.hero-content {
+  position: relative;
+  z-index: 20;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 50px;
+}
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.hero-text h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+.hero-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #facc15;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+.hero-btn:hover {
+  background: #facc15;
+  color: black;
+}
+
+/* Indicators */
+.indicators {
+  display: flex;
+  margin-top: 30px;
+}
+.indicator {
+  width: 24px;
+  height: 4px;
+  background: gray;
+  margin-right: 8px;
+}
+.indicator.active {
+  background: #facc15; /* Yellow */
+}
+
+/* Footer */
+.footer {
+  background: #1f2937;
+  padding: 15px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+.footer .social-icons img {
+  width: 28px;
+  height: 28px;
+  margin-left: 15px;
+  transition: opacity 0.3s;
+}
+.footer .social-icons img:hover {
+  opacity: 0.7;
+}

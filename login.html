@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - LevelUp Fit</title>
+  <link rel="stylesheet" href="logIn.css">
+</head>
+<body id="body">
+
+    <!-- Header / Navbar -->
+  <header>
+    <div class="logo">LevelUp Fit 🎯</div>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="blogs.html">BLOG</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+  
+  <!-- Toggle Switch -->
+  <div class="theme-toggle">
+    <label>
+      <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
+      <span>Light/Dark</span>
+    </label>
+  </div>
+
+  <main class="main">
+    <div class="login-card">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email">
+          <p id="emailError" class="error hidden">Please enter a valid email address.</p>
+          <p id="emailNotFound" class="error hidden">Email not registered. Please sign up first.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="password-field">
+            <input type="password" id="password" name="password" placeholder="Enter your password">
+            <span id="toggleIcon" onclick="togglePassword()">👁️</span>
+          </div>
+          <p id="passwordError" class="error hidden">Password must be at least 6 characters.</p>
+          <p id="invalidPassword" class="error hidden">Incorrect password.</p>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit">Log In</button>
+          <a href="#">Forgot Password?</a>
+        </div>
+
+        <p class="signup-text">
+          Don't have an account? <a href="signup.html">Sign Up</a>
+        </p>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    © 2025 LevelUp Fit. Built by Shivam Yadav.
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+    }
+
+    function togglePassword() {
+      const pwd = document.getElementById('password');
+      const icon = document.getElementById('toggleIcon');
+
+      if (pwd.type === 'password') {
+        pwd.type = 'text';
+        icon.textContent = '🙈';
+      } else {
+        pwd.type = 'password';
+        icon.textContent = '👁️';
+      }
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const emailError = document.getElementById('emailError');
+      const emailNotFound = document.getElementById('emailNotFound');
+      const passwordError = document.getElementById('passwordError');
+      const invalidPassword = document.getElementById('invalidPassword');
+
+      emailError.classList.add('hidden');
+      emailNotFound.classList.add('hidden');
+      passwordError.classList.add('hidden');
+      invalidPassword.classList.add('hidden');
+
+      let isValid = true;
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailError.classList.remove('hidden');
+        isValid = false;
+      }
+
+      if (!password || password.length < 6) {
+        passwordError.classList.remove('hidden');
+        isValid = false;
+      }
+
+      if (!isValid) return;
+
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const user = users.find(user => user.email === email);
+
+      if (!user) {
+        emailNotFound.classList.remove('hidden');
+        return;
+      }
+
+      if (user.password !== password) {
+        invalidPassword.classList.remove('hidden');
+        return;
+      }
+
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      window.location.href = 'functionality.html';
+    });
+  </script>
+</body>
+</html>

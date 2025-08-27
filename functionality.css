@@ -1,0 +1,147 @@
+/* Global */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: rgb(182, 12, 105);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+    /* Header / Navbar */
+header {
+  background-color: #1f2937; /* dark gray */
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+header nav a {
+  margin-left: 24px;
+  font-weight: 500;
+  color: #fff;
+}
+
+header nav a:hover {
+  color: #cca010;
+}
+
+/* Layout */
+main {
+  flex: 1;
+  padding: 24px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* Cards */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.card.wide {
+  grid-column: span 2;
+}
+
+/* Progress Bar */
+.progress-bar {
+  background: #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+  height: 12px;
+  margin-top: 8px;
+}
+
+.progress {
+  background: #facc15;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.small {
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+
+.highlight {
+  color: #6ee7b7;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+/* Buttons */
+button {
+  padding: 10px 18px;
+  background: #facc15;
+  color: black;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #fde047;
+}
+
+button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Challenge Colors */
+.green { color: #6ee7b7; }
+.yellow { color: #fde047; }
+.red { color: #fca5a5; }
+
+/* Footer */
+    footer {
+      background: rgba(0, 0, 0, 0.4);
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 12px;
+      color: #15054d;
+    }
+
+    footer a {
+      color: #0e417c;
+      text-decoration: underline;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: #3b82f6;
+    }

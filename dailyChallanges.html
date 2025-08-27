@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Challenges</title>
+  <link rel="stylesheet" href="dailyChallanges.css">
+</head>
+<body>
+
+   <!-- Header / Navbar -->
+  <header>
+    <div class="logo">LevelUp Fit 🎯</div>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="blogs.html">BLOG</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="challenge-box">
+      <h3>🔥 Daily Challenges</h3>
+
+      <ul id="dailyChallenges">
+        <li>
+          <span>Run 5 km</span>
+          <div>
+            <button onclick="toggleComplete(this)">✅</button>
+            <button onclick="deleteChallenge(this)">🗑️</button>
+          </div>
+        </li>
+        <li>
+          <span>Complete 30 Push-ups</span>
+          <div>
+            <button onclick="toggleComplete(this)">✅</button>
+            <button onclick="deleteChallenge(this)">🗑️</button>
+          </div>
+        </li>
+      </ul>
+
+      <form id="addChallengeForm" onsubmit="addChallenge(event)">
+        <input type="text" id="newChallenge" placeholder="Add your workout (e.g., Squats)" required />
+        <button type="submit">Add</button>
+      </form>
+
+      <button onclick="completeChallenge()" class="complete-btn">
+        Complete Challenge
+      </button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+   &copy; 2025 LevelUp Fit | <a href="dashboard.html">Back to Dashboard</a>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    function addChallenge(event) {
+      event.preventDefault();
+      const input = document.getElementById('newChallenge');
+      const newText = input.value.trim();
+      if (newText) {
+        const ul = document.getElementById('dailyChallenges');
+        const li = document.createElement('li');
+        li.className = "animate-slideIn";
+        li.innerHTML = `
+          <span>${newText}</span>
+          <div>
+            <button onclick="toggleComplete(this)">✅</button>
+            <button onclick="deleteChallenge(this)">🗑️</button>
+          </div>
+        `;
+        ul.appendChild(li);
+        input.value = '';
+      }
+    }
+
+    function deleteChallenge(btn) {
+      btn.closest('li').remove();
+    }
+
+    function toggleComplete(btn) {
+      const li = btn.closest('li');
+      li.classList.toggle('completed');
+    }
+
+    function completeChallenge() {
+      alert("Great work! You're leveling up 💪");
+    }
+  </script>
+</body>
+</html>

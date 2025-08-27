@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Progress Tracker + Milestones</title>
+  <link rel="stylesheet" href="levelUpWorkout.css">
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header>
+    <div class="logo">LevelUp Fit 🎯</div>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="blogs.html">BLOG</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container main-content">
+
+    <h1 class="page-title">🎯 Progress Tracker</h1>
+
+    <!-- Goal Setting -->
+    <div class="card">
+      <h2>Set Your Goals</h2>
+      <label for="stepsGoalInput">Steps Goal:</label>
+      <input type="number" id="stepsGoalInput" placeholder="Enter steps goal">
+
+      <label for="workoutsGoalInput">Workouts Goal:</label>
+      <input type="number" id="workoutsGoalInput" placeholder="Enter workouts goal">
+
+      <button onclick="setGoals()">Set Goals</button>
+    </div>
+
+    <!-- Update Progress -->
+    <div class="card">
+      <h2>Update Your Progress</h2>
+
+      <label for="stepsInput">Steps Taken:</label>
+      <input type="number" id="stepsInput" placeholder="Enter steps taken">
+
+      <label for="exercisesInput">Workouts Completed:</label>
+      <input type="number" id="exercisesInput" placeholder="Enter workouts completed">
+
+      <button onclick="updateProgress()">Update Progress</button>
+    </div>
+
+    <!-- Progress Summary -->
+    <div class="card">
+      <h2>Progress Summary</h2>
+      <ul class="summary-list">
+        <li>🔥 Calories Burned: <span id="caloriesBurned">0.00</span> kcal</li>
+        <li>👣 Steps Taken: <span id="stepsTaken">0</span></li>
+        <li>💪 Workouts Completed: <span id="workoutsCompleted">0</span></li>
+        <li>🏅 Points Earned: <span id="pointsEarned">0</span></li>
+      </ul>
+      <p id="achievementStatus" class="status-msg">Keep going! You're almost there!</p>
+    </div>
+
+    <!-- Milestones -->
+    <div class="card">
+      <h2>Milestones</h2>
+      <p id="milestoneMessage"></p>
+      <div id="milestoneSymbol" class="milestone-symbol"></div>
+    </div>
+
+    <!-- Share -->
+    <div class="card">
+      <h3>Share Your Achievement</h3>
+      <p id="shareText">
+        I just unlocked a new fitness milestone in my workout tracker! 💪 #FitnessGoals #MilestoneAchieved
+      </p>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2025 LevelUp Fit. Built by Shivam Yadav.</p>
+  </footer>
+
+  <!-- Scripts (unchanged) -->
+  <script>
+    let stepsGoal = 0;
+    let workoutsGoal = 0;
+    let points = 0;
+
+    function setGoals() {
+      stepsGoal = parseInt(document.getElementById("stepsGoalInput").value) || 0;
+      workoutsGoal = parseInt(document.getElementById("workoutsGoalInput").value) || 0;
+      alert("Goals set successfully!");
+    }
+
+    function updateProgress() {
+      const stepsTaken = parseInt(document.getElementById("stepsInput").value) || 0;
+      const workoutsCompleted = parseInt(document.getElementById("exercisesInput").value) || 0;
+      const caloriesBurned = (stepsTaken * 0.04) + (workoutsCompleted * 50);
+
+      document.getElementById("caloriesBurned").textContent = caloriesBurned.toFixed(2);
+      document.getElementById("stepsTaken").textContent = stepsTaken;
+      document.getElementById("workoutsCompleted").textContent = workoutsCompleted;
+
+      const achievementStatus = document.getElementById("achievementStatus");
+
+      if (stepsTaken >= stepsGoal && workoutsCompleted >= workoutsGoal) {
+        achievementStatus.textContent = "🎉 Congratulations! You've achieved your goals!";
+        points += 100;
+        document.getElementById("pointsEarned").textContent = points;
+      } else {
+        achievementStatus.textContent = "Keep going! You're almost there!";
+      }
+
+      updateMilestone(points);
+    }
+
+    function updateMilestone(points) {
+      const milestoneMessage = document.getElementById('milestoneMessage');
+      const milestoneSymbol = document.getElementById('milestoneSymbol');
+      let milestoneText = '';
+
+      if (points >= 6000) milestoneText = 'Heroic 🏆';
+      else if (points >= 4500) milestoneText = 'Diamond 💎';
+      else if (points >= 3500) milestoneText = 'Platinum 🔹';
+      else if (points >= 2500) milestoneText = 'Gold 🥇';
+      else if (points >= 1500) milestoneText = 'Silver 🥈';
+      else if (points >= 500) milestoneText = 'Bronze 🥉';
+
+      if (milestoneText) {
+        milestoneMessage.textContent = `You have reached ${milestoneText.split(' ')[0]}!`;
+        milestoneSymbol.textContent = milestoneText.split(' ')[1];
+        generateShareMessage(milestoneText.split(' ')[0]);
+      } else {
+        milestoneMessage.textContent = 'Keep going to reach your first milestone!';
+        milestoneSymbol.textContent = '';
+        generateShareMessage('a new');
+      }
+    }
+
+    function generateShareMessage(milestone) {
+      const message = `I just unlocked the ${milestone} milestone in my workout tracker! 💪 #FitnessGoals #MilestoneAchieved`;
+      document.getElementById("shareText").textContent = message;
+    }
+
+    window.onload = () => {
+      generateShareMessage('a new');
+    };
+  </script>
+</body>
+</html>

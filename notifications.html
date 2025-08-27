@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fitness Motivation Popup</title>
+  <link rel="stylesheet" href="notification.css">
+</head>
+<body id="themeBody">
+
+    <!-- Header / Navbar -->
+  <header>
+    <div class="logo">LevelUp Fit 🎯</div>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="blogs.html">BLOG</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <!-- Buttons -->
+    <div class="button-group">
+      <button id="startBtn" onclick="startNotifications()" class="btn primary">
+        Start Notifications
+      </button>
+      <button id="muteBtn" onclick="muteNotifications()" class="btn secondary">
+        Mute Notifications
+      </button>
+    </div>
+
+    <!-- Popup -->
+    <div id="motivationPopup">
+      Keep going! You are doing great! 💪 #FitnessGoals
+    </div>
+  </main>
+
+    <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2025 LevelUp Fit. Built by Shivam Yadav.</p>
+  </footer>
+
+  <script>
+    let notificationInterval;
+    let isMuted = false;
+
+    const messages = [
+      "Keep going! You're stronger than you think! 💪 #FitnessMotivation",
+      "One more rep! You're getting closer to your goal! 🚀 #FitnessGoals",
+      "Great job! Stay consistent and you'll see amazing results! 🌟 #FitnessJourney",
+      "Push yourself, you're capable of more than you know! 🔥 #StrongerEveryday",
+      "Believe in yourself, and the results will follow! 🏋️‍♀️ #FitnessMindset"
+    ];
+
+    function showMotivationPopup() {
+      if (isMuted) return;
+
+      const popup = document.getElementById("motivationPopup");
+      const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+      popup.textContent = randomMessage;
+      popup.classList.add("visible");
+
+      setTimeout(() => {
+        popup.classList.remove("visible");
+      }, 3000);
+    }
+
+    function startNotifications() {
+      isMuted = false;
+      clearInterval(notificationInterval);
+      notificationInterval = setInterval(showMotivationPopup, 5000);
+      document.getElementById("startBtn").disabled = true;
+      document.getElementById("startBtn").textContent = "Notifications Started";
+    }
+
+    function muteNotifications() {
+      clearInterval(notificationInterval);
+      isMuted = true;
+      document.getElementById("startBtn").disabled = false;
+      document.getElementById("startBtn").textContent = "Start Notifications";
+    }
+  </script>
+</body>
+</html>
