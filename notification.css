@@ -7,22 +7,22 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #fff;
-  color: white;
+  background-color: #0f172a; /* dark background */
+  color: #f8fafc; /* light text */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-    /* Header / Navbar */
+/* Header / Navbar */
 header {
-  background-color: #1f2937; /* dark gray */
+  background-color: #1e293b; /* deep slate */
   color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px 32px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -31,16 +31,22 @@ header {
 header .logo {
   font-size: 1.8rem;
   font-weight: bold;
+  color: #f59e0b; /* amber accent */
 }
 
+header nav {
+  display: flex;
+  flex-wrap: wrap;
+}
 header nav a {
   margin-left: 24px;
-  font-weight: 500;
-  color: #fff;
+  font-weight: 600;
+  color: #f8fafc;
+  transition: color 0.3s;
 }
-
 header nav a:hover {
-  color: #cca010;
+  color: #10b981; /* teal */
+  text-decoration: underline;
 }
 
 /* Main */
@@ -51,13 +57,16 @@ header nav a:hover {
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  text-align: center;
 }
 
 /* Buttons */
 .button-group {
   margin-bottom: 2rem;
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
+  justify-content: center;
 }
 .btn {
   padding: 0.8rem 1.6rem;
@@ -72,19 +81,19 @@ header nav a:hover {
   cursor: not-allowed;
 }
 .primary {
-  background: #2563eb;
+  background: #10b981; /* teal */
   color: white;
 }
 .primary:hover:not(:disabled) {
-  background: #1d4ed8;
+  background: #059669; /* darker teal */
   transform: translateY(-2px);
 }
 .secondary {
-  background: #374151;
+  background: #374151; /* gray */
   color: white;
 }
 .secondary:hover {
-  background: #111827;
+  background: #111827; /* darker gray */
   transform: translateY(-2px);
 }
 
@@ -95,8 +104,8 @@ header nav a:hover {
   left: 50%;
   transform: translateX(-50%) translateY(-20px);
   padding: 14px 28px;
-  background-color: #4CAF50;
-  color: white;
+  background-color: #f59e0b; /* amber */
+  color: #0f172a;
   border-radius: 8px;
   font-weight: bold;
   opacity: 0;
@@ -112,9 +121,61 @@ header nav a:hover {
 
 /* Footer */
 .site-footer {
-  background: rgba(0, 0, 0, 0.6);
+  background: #1e293b;
+  color: #cbd5e1;
   text-align: center;
   padding: 15px 0;
   font-size: 0.9rem;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ========================= */
+/* RESPONSIVE DESIGN */
+/* ========================= */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px;
+  }
+
+  header nav {
+    margin-top: 10px;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  header nav a {
+    margin: 8px 0;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  header .logo {
+    font-size: 1.4rem;
+  }
+
+  .main {
+    padding: 1rem;
+  }
+
+  .btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  #motivationPopup {
+    width: 90%;
+    text-align: center;
+  }
 }

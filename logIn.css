@@ -2,8 +2,8 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: white;
-  color: white;
+  background-color: #0f172a; /* dark background */
+  color: #f8fafc;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11,20 +11,21 @@ body {
   transition: background 0.5s, color 0.5s;
 }
 
-body.dark {
+/* Light mode */
+body.light {
   background: #f4f4f4;
   color: #222;
 }
 
-    /* Header / Navbar */
+/* Header / Navbar */
 header {
-  background-color: #1f2937; /* dark gray */
+  background-color: #1e293b; /* deep slate */
   color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px 32px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -33,24 +34,27 @@ header {
 header .logo {
   font-size: 1.8rem;
   font-weight: bold;
+  color: #f59e0b; /* amber accent */
 }
 
 header nav a {
   margin-left: 24px;
-  font-weight: 500;
-  color: #fff;
+  font-weight: 600;
+  color: #f8fafc;
+  transition: color 0.3s;
 }
-
 header nav a:hover {
-  color: #cca010;
+  color: #10b981; /* teal */
+  text-decoration: underline;
 }
 
-/* Toggle */
+/* Theme Toggle */
 .theme-toggle {
   position: absolute;
   top: 1rem;
   right: 1rem;
   font-size: 14px;
+  cursor: pointer;
 }
 .theme-toggle span {
   margin-left: 8px;
@@ -66,23 +70,23 @@ header nav a:hover {
 }
 
 .login-card {
-  background: rgba(97, 2, 54, 0.9);
+  background: rgba(30, 41, 59, 0.95); /* slate card */
   padding: 2rem;
   border-radius: 12px;
   width: 100%;
   max-width: 400px;
-  color: white;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  color: #f8fafc;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.4);
 }
-body.dark .login-card {
-  background: white;
+body.light .login-card {
+  background: #fff;
   color: #111;
 }
 
 .login-card h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
-  color: #3b82f6;
+  margin-bottom: 2rem;
+  color: #fbbf24; /* amber */
 }
 
 /* Form */
@@ -98,10 +102,12 @@ body.dark .login-card {
   width: 100%;
   padding: 0.6rem;
   border-radius: 6px;
-  border: 1px solid #555;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #f8fafc;
   outline: none;
 }
-body.dark .form-group input {
+body.light .form-group input {
   background: #eee;
   border-color: #ccc;
   color: #111;
@@ -135,9 +141,11 @@ body.dark .form-group input {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 .form-actions button {
-  background: #2563eb;
+  background: #10b981; /* teal */
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
@@ -146,14 +154,15 @@ body.dark .form-group input {
   transition: background 0.3s;
 }
 .form-actions button:hover {
-  background: #1d4ed8;
+  background: #059669; /* darker teal */
 }
 .form-actions a {
   font-size: 14px;
-  color: #60a5fa;
-  text-decoration: none;
+  color: #f8fafc;
+  text-decoration: dotted;
 }
 .form-actions a:hover {
+  color: #f59e0b; /* amber */
   text-decoration: underline;
 }
 
@@ -161,9 +170,10 @@ body.dark .form-group input {
 .signup-text {
   text-align: center;
   font-size: 14px;
+  margin-top: 1rem;
 }
 .signup-text a {
-  color: #3b82f6;
+  color: #f59e0b;
   font-weight: bold;
   text-decoration: none;
 }
@@ -177,8 +187,64 @@ body.dark .form-group input {
   font-size: 13px;
   padding: 1rem;
   border-top: 1px solid rgba(255,255,255,0.2);
+  background: #1e293b;
+  color: #cbd5e1;
 }
-body.dark .footer {
+body.light .footer {
+  background: #e5e7eb;
   border-color: #ccc;
   color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px;
+  }
+
+  header nav {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  header nav a {
+    margin: 8px 0;
+  }
+
+  .login-card {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  header .logo {
+    font-size: 1.4rem;
+  }
+
+  .login-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .form-group input {
+    padding: 0.5rem;
+  }
+
+  .form-actions button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
 }

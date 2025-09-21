@@ -1,21 +1,21 @@
 /* General Styles */
-
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  color: white;
+  background-color: #0f172a;
+  color: #f8fafc;
   overflow-x: hidden; /* ✅ Prevent horizontal scrolling */
 }
 
 /* Header / Navbar */
 header {
-  background-color: #1f2937; /* dark gray */
+  background-color: #1e293b; /* deep slate */
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px 32px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -28,31 +28,27 @@ header .logo {
 
 header nav a {
   margin-left: 24px;
-  font-weight: 500;
-  color: #fff;
+  font-weight: 600;
+  color: #f8fafc;
 }
 
 header nav a:hover {
-  color: #ddeb20;
+  color: #f59e0b; /* amber */
   text-decoration: underline;
 }
 
 .login-btn {
-  background: #4f46e5;
+  background: #10b981; /* teal */
   padding: 10px 18px;
   border-radius: 8px;
-
 }
 .login-btn a {
   text-decoration: none;
   color: white;
   font-weight: bold;
 }
-.login-btn:hover {
-  background: #6366f1;
-}
 .login-btn a:hover {
-  color: #facc15;
+  color: #fbbf24; /* lighter amber */
 }
 
 /* Slideshow */
@@ -95,14 +91,14 @@ header nav a:hover {
 .hero-btn {
   display: inline-block;
   padding: 10px 20px;
-  border: 2px solid #facc15;
+  border: 2px solid #f59e0b;
   text-decoration: none;
   color: white;
   transition: 0.3s;
 }
 .hero-btn:hover {
-  background: #facc15;
-  color: black;
+  background: #f59e0b;
+  color: #0f172a;
 }
 
 /* Indicators */
@@ -113,21 +109,22 @@ header nav a:hover {
 .indicator {
   width: 24px;
   height: 4px;
-  background: gray;
+  background: #475569;
   margin-right: 8px;
 }
 .indicator.active {
-  background: #facc15; /* Yellow */
+  background: #10b981; /* teal */
 }
 
 /* Footer */
 .footer {
-  background: #1f2937;
+  background: #1e293b;
   padding: 15px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 14px;
+  color: #cbd5e1;
 }
 .footer .social-icons img {
   width: 28px;

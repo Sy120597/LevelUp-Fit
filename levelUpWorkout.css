@@ -7,8 +7,8 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #fff;
-  color: #f0f0f0;
+  background-color: #0f172a; /* dark base */
+  color: #f8fafc; /* light text */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,16 +21,15 @@ body {
   margin: 0 auto;
 }
 
-
-    /* Header / Navbar */
+/* Header / Navbar */
 header {
-  background-color: #1f2937; /* dark gray */
+  background-color: #1e293b; /* slate */
   color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px 32px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -39,24 +38,24 @@ header {
 header .logo {
   font-size: 1.8rem;
   font-weight: bold;
+  color: #f59e0b; /* amber accent */
 }
 
 header nav a {
   margin-left: 24px;
-  font-weight: 500;
-  color: #fff;
+  font-weight: 600;
+  color: #f8fafc;
+  transition: color 0.3s;
 }
-
 header nav a:hover {
-  color: #cca010;
+  color: #10b981; /* teal */
+  text-decoration: underline;
 }
-
 
 /* Main Content */
 .main-content {
   flex: 1;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin: 30px 0;
 }
 
 .page-title {
@@ -64,53 +63,62 @@ header nav a:hover {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #a01471;
+  color: #fbbf24; /* amber highlight */
 }
 
 /* Cards */
 .card {
-  background: rgba(20, 20, 20, 0.85);
+  background: rgba(30, 41, 59, 0.95); /* dark slate card */
   padding: 20px;
   margin-bottom: 20px;
-  border-radius: 10px;
-  border: 1px solid #333;
+  border-radius: 12px;
+  border: 1px solid #334155;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
-.card h2, 
+.card h2,
 .card h3 {
   margin-bottom: 15px;
   font-size: 1.5rem;
-  color: #ffcdf3;
+  color: #10b981; /* teal headings */
 }
 
 .card label {
   display: block;
   margin: 10px 0 5px;
+  font-weight: 500;
 }
 
 .card input {
   width: 100%;
   padding: 10px;
   border-radius: 6px;
-  border: 1px solid #666;
-  background: #111;
-  color: #fff;
+  border: 1px solid #475569;
+  background: #1e293b;
+  color: #f8fafc;
   margin-bottom: 10px;
 }
 
+.card input:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 5px #10b981;
+}
+
+/* Buttons */
 .card button {
-  background: #007bff;
+  background: #10b981; /* teal CTA */
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s;
 }
 
 .card button:hover {
-  background: #0056b3;
+  background: #059669; /* darker teal */
+  transform: translateY(-2px);
 }
 
 /* Summary List */
@@ -128,9 +136,10 @@ header nav a:hover {
   margin-top: 10px;
   text-align: center;
   font-weight: bold;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   padding: 10px;
   border-radius: 6px;
+  color: #fbbf24; /* amber message */
 }
 
 /* Milestones */
@@ -138,13 +147,70 @@ header nav a:hover {
   font-size: 3rem;
   text-align: center;
   margin-top: 10px;
+  color: #f59e0b;
 }
 
 /* Footer */
 .site-footer {
-  background: rgba(0, 0, 0, 0.6);
+  background: #1e293b;
   text-align: center;
   padding: 15px 0;
   font-size: 0.9rem;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: #cbd5e1;
+}
+
+/* ========================= */
+/* RESPONSIVE DESIGN */
+/* ========================= */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px;
+  }
+
+  header nav {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  header nav a {
+    margin: 8px 0;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .card {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  header .logo {
+    font-size: 1.4rem;
+  }
+
+  .page-title {
+    font-size: 1.6rem;
+  }
+
+  .card h2,
+  .card h3 {
+    font-size: 1.2rem;
+  }
+
+  .card input,
+  .card button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .status-msg {
+    font-size: 0.85rem;
+  }
 }

@@ -3,32 +3,32 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f0f4f8;
-  color: #333;
+  background-color: #0f172a; /* dark base */
+  color: #f8fafc; /* light text */
   line-height: 1.6;
 }
 
 /* Links */
 a {
-  color: #fafbfc;
+  color: #fff; /* amber */
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 a:hover {
-  color: #1875ee;
+  color: #10b981; /* teal */
   text-decoration: underline;
 }
 
 /* Header / Navbar */
 header {
-  background-color: #1f2937;
+  background-color: #1e293b; /* slate */
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px 32px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -37,15 +37,16 @@ header {
 header .logo {
   font-size: 1.8rem;
   font-weight: bold;
+  color: #fff; /* amber logo */
 }
 
 header nav a {
   margin-left: 24px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 header nav a:hover {
-  color: #e2d51a;
+  color: #10b981; /* teal hover */
   text-decoration: underline;
 }
 
@@ -53,25 +54,26 @@ header nav a:hover {
 section {
   max-width: 800px;
   margin: 40px auto;
-  background-color: #ffffff;
-  border-radius: 12px;
+  background-color: rgba(30, 41, 59, 0.95); /* slate card with transparency */
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
   padding: 32px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 section:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
 }
 
 /* Section headings */
 section h2 {
   font-size: 1.8rem;
   margin-bottom: 20px;
-  border-bottom: 2px solid #60a5fa;
+  border-bottom: 2px solid #d6ae49; /* amber */
   padding-bottom: 8px;
-  color: #1f2937;
+  color: #d6ae49;
 }
 
 /* Blog Input */
@@ -79,76 +81,95 @@ section h2 {
   width: 100%;
   padding: 16px;
   border-radius: 12px;
-  border: 1px solid #d1d5db;
+  border: 1px solid #334155;
   margin-bottom: 16px;
   font-size: 1rem;
   resize: vertical;
+  background-color: #1e293b;
+  color: #f8fafc;
+}
+
+.blog-input textarea:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 5px #10b981;
 }
 
 .blog-input button {
   padding: 12px 16px;
-  background-color: #2563eb;
-  color: #fff;
+  background-color: #10b981; /* teal */
+  color: #f8fafc;
   font-weight: 600;
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s;
 }
 
 .blog-input button:hover {
-  background-color: #1d4ed8;
+  background-color: #059669;
+  transform: translateY(-2px);
 }
 
 /* Blog posts */
 .about-card {
-  background-color: #e5e7eb;
+  background-color: rgba(30, 41, 59, 0.95); /* slate card */
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
   margin-bottom: 16px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .about-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
 }
 
 .post-date {
   font-size: 0.85rem;
-  color: #6b7280;
+  color: #9ca3af; /* muted slate */
   font-style: italic;
 }
 
 .post-content {
   margin-top: 8px;
   font-size: 1rem;
-  color: #111827;
+  color: #f8fafc;
 }
 
 .delete-btn {
   margin-top: 12px;
   padding: 8px 16px;
-  background-color: #ef4444;
-  color: #fff;
+  background-color: #ef4444; /* red */
+  color: #f8fafc;
   font-weight: 600;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s;
 }
 
 .delete-btn:hover {
   background-color: #dc2626;
+  transform: translateY(-2px);
 }
 
 /* Footer */
 footer {
-  background-color: #1f2937;
-  color: #d1d5db;
+  background-color: #1e293b; /* slate */
+  color: #cbd5e1;
   text-align: center;
   padding: 16px 0;
   margin-top: 40px;
   font-size: 0.875rem;
+}
+
+footer a {
+  color: #fbbf24; /* amber links */
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: #10b981; /* teal hover */
 }
